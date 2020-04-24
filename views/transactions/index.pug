@@ -1,0 +1,10 @@
+a(href='/transactions/create') New
+h1 Danh sach lien ket
+ul 
+    each transaction in transactions
+        li
+            lable User ID: 
+            span=transaction.userId
+            br
+            lable Book ID: 
+            span=transaction.bookId

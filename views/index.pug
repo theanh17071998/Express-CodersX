@@ -1,0 +1,13 @@
+a(href='/books/create') New
+h1 Sách ở cửa hàng
+ul 
+    each book in books
+        li
+            lable Title: 
+            span=book.title
+            br
+            lable Description: 
+            span=book.description
+        a(href='/books/update/' + book.id) edit
+        span &nbsp
+        a(href='/books/delete/' + book.id) delete

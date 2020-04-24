@@ -1,0 +1,14 @@
+a(href="/users/create") New User
+h1 Danh sách những người thuê sách
+ul 
+    each user in users
+        li
+            b Name:
+            span=user.name
+            span &nbsp
+            b Phone:
+            span=user.phone
+            span &nbsp
+            a(href="/users/delete/" + user.id) delete
+            span &nbsp
+            a(href="/users/update/" + user.id) edit

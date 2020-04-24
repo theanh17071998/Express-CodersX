@@ -1,0 +1,18 @@
+h1 Create new book
+form(action="/books/create" method="POST")
+  
+    //- name ='phone' và name="name" trong đó name và id là các key trong mảng users có sẵn của chúng ta
+  
+    label Title
+    span &nbsp
+    input(type="text", name = "title") 
+    //- name= "name" chính là key của object trong mảng users trong db.json
+    br
+    label Description
+    span &nbsp
+    input(type="text", name = "description")
+     //- name= "phone" chính là key của object trong mảng users trong db.json
+    br
+    br
+    //- id thì tự sinh bởi req.body.id = shortid.generate();
+    button create

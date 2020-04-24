@@ -1,0 +1,47 @@
+{
+  "books": [
+    {
+      "title": "Hỗ trợ học Git",
+      "description": "",
+      "id": "2gtUe7odp"
+    },
+    {
+      "title": "Hỗ trợ học JavaScript",
+      "description": "Tiểu thuyết",
+      "id": "_z9QYhzRl"
+    },
+    {
+      "title": "Nắng và gió",
+      "description": "dsfsaf",
+      "id": "0PZBMcmAC"
+    }
+  ],
+  "users": [
+    {
+      "name": "Nguyễn Thế Anh",
+      "phone": "03878700232",
+      "id": "tWaBnJDiD"
+    },
+    {
+      "name": " ゲエン　テ　アイン",
+      "phone": "0387870023",
+      "id": "QJu-XhThB"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1",
+      "name": "Nguyễn Thế Anh",
+      "title": "Hỗ trợ học Git",
+      "bookId": "2gtUe7odp",
+      "userId": "tWaBnJDiD"
+    },
+    {
+      "id": "2",
+      "name": " ゲエン　テ　アイン",
+      "title": "Hỗ trợ học Git",
+      "bookId": "2gtUe7odp",
+      "userId": "QJu-XhThB"
+    }
+  ]
+}
