@@ -1,10 +1,25 @@
-a(href='/transactions/create') New
-h1 Danh sach lien ket
-ul 
-    each transaction in transactions
-        li
-            lable User ID: 
-            span=transaction.userId
-            br
-            lable Book ID: 
-            span=transaction.bookId
+extends ../layouts/common.pug
+block content
+    div(class="d-flex")
+        h1.ml-2 
+            span.mr-5 Transactions
+            a(href='/transactions/create', class="btn btn-primary ml-2 mt-2") New
+    if error
+        .alert.alert-danger= error
+    table(style='width:90%' class=' ml-4 table table-bordered')
+            tr
+              th User ID
+              th User Name
+              th Book ID
+              th Book Title
+              th isComplete
+              th Change complete
+            each transaction in transactions
+                tr
+                    td=transaction.userId
+                    td=transaction.name
+                    td=transaction.bookId
+                    td=transaction.title
+                    td=transaction.iscomplete
+                    td
+                        a(href=`/transactions/${transaction.id}/complete`) Change

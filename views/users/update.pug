@@ -1,7 +1,9 @@
-h1 Sửa user
-form(action=`/users/update/${user.id}`, method="POST")
-    label Name
-    input(type="text", name='name', value=user.name)
-    label Phone
-    input(type="text", name='phone', value=user.phone)
-    button Save
+extends ../layouts/common.pug
+block content
+    h1 Sửa user
+    form(action=`/users/update/${user.id}`, method="POST")
+        label Name
+        input(type="text", name='name', value=user.name, class="form-control ml-4")
+        label Phone
+        input(type="text", name='phone', value=user.phone, class="form-control ml-4")
+        button(class="btn btn-primary ml-4 mt-3") Save

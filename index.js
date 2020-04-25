@@ -12,6 +12,9 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) 
+app.use(express.static('public'))
+
+
 
 app.get('/', function (req, res) { 
     res.send("<h1>Hello coder.Tokyo</h1>");
