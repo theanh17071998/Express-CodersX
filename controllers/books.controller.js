@@ -7,14 +7,6 @@ module.exports.index = function (req, res) {
         books: db.get("books").value()
     })
    }
-module.exports.update = function(req, res){ 
-    var id = req.params.id; 
-    var book = db.get('books').find({id: id}).value()
-    db.get('books').find(book)
-    .assign({ title: 'Năng và gió'})
-    .write()
-    res.redirect('/books')
- }
  module.exports.delete = function(req, res){
     var id = req.params.id; 
     var book = db.get('books').find({id: id}).value()
@@ -30,5 +22,21 @@ module.exports.update = function(req, res){
     req.body.id = shortid.generate();
     db.get("books").push(req.body).write();  
     res.redirect('/books'); 
-   
  }
+ module.exports.postUpdate =  (req,res) => {
+   var id = req.params.id;
+   var book = db.get('books').find({id: id}).value();
+   db.get('books').find(book).assign({title: req.body.title, description: req.body.description }).write();
+   res.redirect('/books')
+}
+module.exports.update = (req, res) => {
+   var id = req.params.id;
+   var book = db.get('books').find({id: id}).value();
+   var bookEdit = {};
+   bookEdit.id = id;
+   bookEdit.title = book.title;
+   bookEdit.description = book.description;
+   res.render('books/update', {
+       book: bookEdit
+   })
+}

@@ -1,12 +1,13 @@
 extends ../layouts/common.pug
 block content
     div(class="d-flex")
-        h2 Sách ở cửa hàng
-        a(href='/books/create', class="btn btn-primary ml-2 mt-2") New
+        h1.ml-2 
+            span.mr-5 Sách
+            a(href='/books/create', class="btn btn-primary ml-2 mt-2") New
     table(style='width:90% ', class='ml-4 table table-bordered')
             tr
               th Title
-              th book.title
+              th Description
               th(colspan="2") Status
             each book in books
                  tr
@@ -16,14 +17,3 @@ block content
                         a(href='/books/update/' + book.id, class="btn btn-primary") Edit
                     td 
                         a(href='/books/delete/' + book.id, class="btn btn-primary") Delete
-    //- ul(class="mt-5 ") 
-    //-     each book in books
-    //-         li
-    //-             lable Title: 
-    //-             span=book.title
-    //-             br
-    //-             lable book.title: 
-    //-             span=book.description
-    //-             a(href='/books/update/' + book.id, class="btn btn-primary") Edit
-    //-             span &nbsp
-    //-             a(href='/books/delete/' + book.id, class="btn btn-primary") Delete

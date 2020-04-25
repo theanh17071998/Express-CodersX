@@ -23,15 +23,17 @@ module.exports.delete = (req, res) => {
 }
 module.exports.postUpdate =  (req,res) => {
     var id = req.params.id;
+    console.log(id)
     var user = db.get('users').find({id: id}).value();
     db.get('users').find(user).assign({name: req.body.name, phone: req.body.phone }).write();
     res.redirect('/users')
 }
 module.exports.update = (req, res) => {
     var id = req.params.id;
+    console.log(id)
     var user = db.get('users').find({id: id}).value();
-    // db.get('users').find(user).assign({name: 'Nguyen Van A'}).write();
     var userEdit = {};
+    userEdit.id = id;
     userEdit.name = user.name
     userEdit.phone = user.phone
     res.render('users/update', {
