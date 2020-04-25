@@ -1,7 +1,5 @@
 const express = require('express');
-const shortid = require('shortid');
 
-const db = require('../db')
 const controller = require('../controllers/books.controller')
 const validate = require('../validate/book.validate')
 
