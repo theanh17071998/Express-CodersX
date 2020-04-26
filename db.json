@@ -57,64 +57,72 @@
       "phone": "0387870023",
       "id": "QJu-XhThB",
       "email": "tranlethutrang@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": false
+      "password": "$2b$10$A5O8aUzH7M9O7t7a.ovD2eUcP.D5XoR/waDuE6VzFRpwjcwYyiCje",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
       "name": "Nguyễn Thế Anh",
       "phone": "0387870022",
       "id": "kror9omDF",
       "email": "nguyentheanh17071998@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": true
+      "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
+      "isAdmin": true,
+      "wrongLoginCount": 0
     },
     {
       "name": "Nguyễn Tuấn Anh ",
       "phone": "0387870022",
       "email": "nguyentuananh@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "U-dIuWhyn",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
       "name": "Nguyễn Quỳnh Chi",
       "phone": "0387653300",
       "email": "nguyenquynhchi@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "PpAWdJpqX",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 5
     },
     {
       "name": "Lưu Lê Tuấn Nghĩa",
       "phone": "0376948833",
       "email": "tuannghia@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "6nJkNYO4H",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
       "name": "Uông Thị Thu Thủy",
       "phone": "0384604727",
       "email": "uongthuy@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "FO-2SsWsl",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
       "name": "Nguyễn Thanh Đoàn",
       "phone": "0387870022",
       "email": "nguyenthanhdoan@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "pjWzDymoj",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
       "name": "Nguyễn Quang Việt",
       "phone": "0387870023",
       "email": "nguyenquangviet@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "FM_H09FXo",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [

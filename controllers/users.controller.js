@@ -1,5 +1,6 @@
 const shortid = require('shortid');
-const md5 = require('md5')
+// const md5 = require('md5')
+const bcrypt = require('bcrypt')
 
 const db = require('../db')
 
@@ -14,7 +15,7 @@ module.exports.create = (req, res) => {
 module.exports.postCreate =  (req, res) => {
     req.body.id = shortid.generate();
     req.body.isAdmin = false;
-    req.body.password = md5(req.body.password);
+    req.body.password = bcrypt.hashSync(req.body.password, 10);
     db.get('users').push(req.body).write();
     res.redirect('/users')
 }
