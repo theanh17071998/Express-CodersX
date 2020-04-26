@@ -57,42 +57,64 @@
       "phone": "0387870023",
       "id": "QJu-XhThB",
       "email": "tranlethutrang@gmail.com",
-      "password": "123123"
+      "password": "4297f44b13955235245b2497399d7a93",
+      "isAdmin": false
     },
     {
       "name": "Nguyễn Thế Anh",
       "phone": "0387870022",
       "id": "kror9omDF",
       "email": "nguyentheanh17071998@gmail.com",
-      "password": "123123"
+      "password": "4297f44b13955235245b2497399d7a93",
+      "isAdmin": true
     },
     {
       "name": "Nguyễn Tuấn Anh ",
       "phone": "0387870022",
       "email": "nguyentuananh@gmail.com",
-      "password": "123123",
-      "id": "U-dIuWhyn"
+      "password": "4297f44b13955235245b2497399d7a93",
+      "id": "U-dIuWhyn",
+      "isAdmin": false
     },
     {
       "name": "Nguyễn Quỳnh Chi",
       "phone": "0387653300",
       "email": "nguyenquynhchi@gmail.com",
-      "password": "123123",
-      "id": "PpAWdJpqX"
+      "password": "4297f44b13955235245b2497399d7a93",
+      "id": "PpAWdJpqX",
+      "isAdmin": false
     },
     {
       "name": "Lưu Lê Tuấn Nghĩa",
       "phone": "0376948833",
       "email": "tuannghia@gmail.com",
-      "password": "123123",
-      "id": "6nJkNYO4H"
+      "password": "4297f44b13955235245b2497399d7a93",
+      "id": "6nJkNYO4H",
+      "isAdmin": false
     },
     {
       "name": "Uông Thị Thu Thủy",
       "phone": "0384604727",
       "email": "uongthuy@gmail.com",
-      "password": "123123",
-      "id": "FO-2SsWsl"
+      "password": "4297f44b13955235245b2497399d7a93",
+      "id": "FO-2SsWsl",
+      "isAdmin": false
+    },
+    {
+      "name": "Nguyễn Thanh Đoàn",
+      "phone": "0387870022",
+      "email": "nguyenthanhdoan@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "id": "pjWzDymoj",
+      "isAdmin": false
+    },
+    {
+      "name": "Nguyễn Quang Việt",
+      "phone": "0387870023",
+      "email": "nguyenquangviet@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "id": "FM_H09FXo",
+      "isAdmin": false
     }
   ],
   "transactions": [
