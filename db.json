@@ -86,7 +86,7 @@
       "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "PpAWdJpqX",
       "isAdmin": false,
-      "wrongLoginCount": 5
+      "wrongLoginCount": 0
     },
     {
       "name": "Lưu Lê Tuấn Nghĩa",
@@ -104,7 +104,7 @@
       "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "FO-2SsWsl",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 3
     },
     {
       "name": "Nguyễn Thanh Đoàn",
@@ -113,7 +113,7 @@
       "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "pjWzDymoj",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 3
     },
     {
       "name": "Nguyễn Quang Việt",
@@ -122,7 +122,15 @@
       "password": "$2b$10$IqCysm1mtT/4c0cBQpFIQOpmr5KuZuD3hSf9xPn6NAi7DfIJy21Fm",
       "id": "FM_H09FXo",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 3
+    },
+    {
+      "name": "Trịnh Ngọc Khánh",
+      "phone": "0387870023",
+      "email": "trinhngockhanh@gmail.com",
+      "password": "$2b$10$uQGKG5f5tdtGicFTA3QSIOmymP/kNGwfILRYYcDKoxBL4EkPMb1gG",
+      "id": "nn1MbrgEn",
+      "isAdmin": false
     }
   ],
   "transactions": [
