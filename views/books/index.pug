@@ -17,3 +17,20 @@ block content
                         a(href='/books/update/' + book.id, class="btn btn-primary") Edit
                     td 
                         a(href='/books/delete/' + book.id, class="btn btn-primary") Delete
+
+    nav(aria-label='Page navigation example' class='float-right mr-5')
+      ul.pagination
+        li.page-item
+          a.page-link(href='#', aria-label='Previous')
+            span(aria-hidden='true') &laquo;
+            span.sr-only Previous
+        while n < totalPage
+            if n == page
+                li.page-item.active
+                    a.page-link(href=`/books?page=${n}`)=n++
+            li.page-item
+                a.page-link(href=`/books?page=${n}`)=n++
+        li.page-item
+          a.page-link(href='#', aria-label='Next')
+            span(aria-hidden='true') &raquo;
+            span.sr-only Next

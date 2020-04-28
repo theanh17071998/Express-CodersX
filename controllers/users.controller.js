@@ -5,8 +5,17 @@ const bcrypt = require('bcrypt')
 const db = require('../db')
 
 module.exports.index = (req, res) => {
+    let page = req.query.page || 1;
+    let perPage = 8;
+    let drop = (page-1)*perPage;
+    let total = db.get("users").value().length;
+    let totalPage = total/perPage;
     res.render('users/index', {
-        users: db.get('users').value()
+        users: db.get('users').drop(drop).take(perPage).value(),
+        totalPage: totalPage,
+        n : 1,
+        page: page
+        
     })
 }
 module.exports.create = (req, res) => {

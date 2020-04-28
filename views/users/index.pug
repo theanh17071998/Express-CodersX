@@ -16,3 +16,20 @@ block content
                  a(href="/users/delete/" + user.id, class="btn btn-primary") Delete
             td 
                 a(href="/users/update/" + user.id, class="btn btn-primary") Edit
+
+    nav(aria-label='Page navigation example' class='float-right mr-5')
+      ul.pagination
+        li.page-item
+          a.page-link(href='#', aria-label='Previous')
+            span(aria-hidden='true') &laquo;
+            span.sr-only Previous
+        while n < totalPage
+            if n == page
+                li.page-item.active
+                    a.page-link(href=`/users?page=${n}`)=n++
+            li.page-item
+                a.page-link(href=`/users?page=${n}`)=n++
+        li.page-item
+          a.page-link(href='#', aria-label='Next')
+            span(aria-hidden='true') &raquo;
+            span.sr-only Next

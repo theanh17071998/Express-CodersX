@@ -1,6 +1,4 @@
 // const md5 = require('md5')
-require('dotenv').config();
-
 const bcrypt = require('bcrypt')
 const sgMail = require('@sendgrid/mail');
 
@@ -14,7 +12,6 @@ module.exports.postLogin =  (req, res, next) => {
    const password = req.body.password;
    const user = db.get('users').find({email: email}).value()
    let count = user.wrongLoginCount;
-   console.log(process.env.SENDGRID_API_KEY);
    if(count === 2){
     // using Twilio SendGrid's v3 Node.js Library
     // https://github.com/sendgrid/sendgrid-nodejs
