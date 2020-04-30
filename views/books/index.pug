@@ -6,11 +6,14 @@ block content
             a(href='/books/create', class="btn btn-primary ml-2 mt-2") New
     table(style='width:90% ', class='ml-4 table table-bordered')
             tr
+              th avatar
               th Title
               th Description
               th(colspan="2") Status
             each book in books
                  tr
+                    td
+                      img(src=book.avatar width='32')
                     td=book.title
                     td=book.description
                     td

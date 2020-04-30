@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.SESSION_SECRET)) 
 app.use(express.static('public'))
 
-app.get('/', function (req, res) { 
+app.get('/', function (req, res ) { 
     res.send("<h1>Hello coder.Tokyo</h1>");
  })
 app.use('/users', authMiddleware.requireAuth, authorMiddlerware.authoring, userRoute);

@@ -1,6 +1,8 @@
 extends ../layouts/common.pug
 block content
-    h1 Sửa user
+    .d-flex.align-items-center
+        h1(class='mr-3') Sửa user
+        a(href=`/users/profile/avatar/${user.id}`) Thay đổi avatar
     form(action=`/users/update/${user.id}`, method="POST")
         label Name
         input(type="text", name='name', value=user.name, class="form-control ml-4")
