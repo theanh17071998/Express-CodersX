@@ -4,10 +4,11 @@ const shortid = require('shortid');
 const db = require('../db')
 const controller = require('../controllers/transactions.controller')
 
-const route = express.Router();
+const router = express.Router();
 
-route.get('/', controller.index);
-route.get('/create', controller.create);
-route.post('/create', controller.postCreate);
-route.get('/:id/complete', controller.complete)
-module.exports = route;
+router.get('/', controller.index);
+router.get('/create', controller.create);
+router.post('/create', controller.postCreate);
+router.get('/:id/complete', controller.complete)
+router.get('/switch/:sessionId', controller.switchTransaction)
+module.exports = router;

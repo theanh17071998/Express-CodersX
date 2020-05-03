@@ -28,6 +28,7 @@ module.exports.postCreate =  (req, res) => {
     req.body.avatar = cloudinary
     .image("http://res.cloudinary.com/nguyentheanh/image/upload/v1588119828/TA_Books/qjyhr2twdmdlvtznfxb5.png")
     .split("'")[1];
+    req.body.wrongLoginCount =  0;
     var salt = bcrypt.genSaltSync(10);
     req.body.password = bcrypt.hashSync(req.body.password, salt);
     db.get('users').push(req.body).write();

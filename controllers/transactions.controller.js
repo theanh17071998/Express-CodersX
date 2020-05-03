@@ -16,7 +16,7 @@ module.exports.index = function (req, res) {
     })
    }
 module.exports.create =  function (req, res) {
-    res.render('transactions/create', {
+    return res.render('transactions/create', {
         books: db.get('books').value(),
         users: db.get('users').value()
     });
@@ -37,11 +37,10 @@ module.exports.postCreate = function (req, res) {
     const id = req.params.id;
     const transaction = db.get('transactions').find({id: id}).value();
     if(!transaction){
-        res.render('transactions/index', {
+        return res.render('transactions/index', {
             error: 'Id transaction not exist',
             transactions: db.get("transactions").value()
         })
-        return;
     }
     if(transaction.iscomplete === true){
         db.get('transactions').find(transaction).assign({iscomplete: false}).write()
@@ -51,3 +50,29 @@ module.exports.postCreate = function (req, res) {
    
     res.redirect('/transactions')
  }
+
+module.exports.switchTransaction = (req, res, next) => {
+    if(!req.signedCookies.sessionId){
+       return  res.redirect('/books')
+    }
+    const sessionId = req.params.sessionId;
+    var userSession = db.get('sessions').find({id: sessionId}).value();
+    var user = db.get('users').find({id: sessionId}).value();
+    db.get('users').find(user).assign({cart: userSession.cart}).write()
+    var cart = user.cart;
+    for(var key in cart){
+        let transaction ={};
+        transaction.name = user.name;
+        var book = db.get('books').find({id: key}).value();
+        transaction.title = book.title;
+        transaction.id = shortid.generate();
+        transaction.userId = user.id
+        transaction.bookId = key;
+        transaction.iscomplete = false;
+        db.get('transactions').push(transaction).write();
+    }
+    db.get('sessions')
+    .remove({id: sessionId})
+    .write()
+    res.redirect('/transactions')
+}

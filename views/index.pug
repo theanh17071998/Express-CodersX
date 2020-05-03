@@ -1,13 +1,34 @@
-a(href='/books/create') New
-h1 Sách ở cửa hàng
-ul 
-    each book in books
-        li
-            lable Title: 
-            span=book.title
-            br
-            lable Description: 
-            span=book.description
-        a(href='/books/update/' + book.id) edit
-        span &nbsp
-        a(href='/books/delete/' + book.id) delete
+extends ./layouts/common
+block content
+    div(style='display: flex;justify-content: center; margin-top: 20px')
+        div(style='width: 80%', data-ride='carousel')#carouselExampleCaptions.carousel.slide
+            ol.carousel-indicators
+                li.active(data-target='#carouselExampleCaptions', data-slide-to='0')
+                li(data-target='#carouselExampleCaptions', data-slide-to='1')
+                li(data-target='#carouselExampleCaptions', data-slide-to='2')
+            .carousel-inner
+                .carousel-item.active
+                    img.d-block.w-100(src='https://picsum.photos/750/200', alt='...')
+                    .carousel-caption.d-none.d-md-block
+                        h5 Tôi tài giỏi, bạn cũng thế – Adam Khoo
+                        p Sáng tác bởi một doanh nhân Adam Khoo người Singapore. Nội dung của bộ sách là những chia sẻ về các câu chuyện và các phương pháp học tập. 
+                .carousel-item
+                    img.d-block.w-100(src='https://picsum.photos/750/200', alt='...')
+                    .carousel-caption.d-none.d-md-block
+                        h5 Đắc nhân tâm – Dale Carnegie
+                        p Sách có nội dung đưa ra nhiều lời khuyên bổ ích trong cuộc sống hàng ngày. Những cách đối nhân xử thế giúp người đọc hoàn thiện bản thân và tiến tới chiến thắng.
+                .carousel-item
+                    img.d-block.w-100(src='https://picsum.photos/750/200', alt='...')
+                    .carousel-caption.d-none.d-md-block
+                        h5 Nhà giả kim – Paulo Coelho
+                        p Nhà giả kim như là đang tự thuật trò chuyện với chính bản thân mình. Sách chỉ ra được những thứ giản đơn mà thâm thúy nhất trong đời, khi đọc sách mới có thể ngộ ra được. Bởi rất ít ai có thể tự mình nhận biết được điều đó. Tác phẩm đem lại cho độc giả sự lạc quan, những điều mơ ước mà con người nhiều lúc cũng chỉ biết mơ và không có gan thực hành. Thật sự nhà giả kim cũng được biết tới tại rất nhiều quốc gia trên thế giới. Nổi bật còn được hầu hết những độc giả ở nhiều lứa tuổi ưa thích và lựa chọn.
+            a.carousel-control-prev(href='#carouselExampleCaptions', role='button', data-slide='prev')
+                span.carousel-control-prev-icon(aria-hidden='true')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselExampleCaptions', role='button', data-slide='next')
+                span.carousel-control-next-icon(aria-hidden='true')
+                span.sr-only Next
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', crossorigin='anonymous')
+

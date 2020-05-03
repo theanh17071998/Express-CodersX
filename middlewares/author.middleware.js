@@ -7,7 +7,7 @@ module.exports.authoring = (req, res, next) => {
         return transaction.userId === cookie;
     })
     if(user.isAdmin === false){
-        return res.render('transactions/index', {
+       return res.render('transactions/index', {
             transactions: transactionsUser
         })
     }

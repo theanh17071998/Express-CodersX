@@ -1,26 +1,34 @@
 extends ../layouts/common.pug
 block content
-    div(class="d-flex")
-        h1.ml-2 
-            span.mr-5 Sách
-            a(href='/books/create', class="btn btn-primary ml-2 mt-2") New
-    table(style='width:90% ', class='ml-4 table table-bordered')
+    h1(style='margin-left: 2%')
+      | Sách 
+      if isAdmin === true
+        span
+          a(href='/books/create', class="btn btn-primary ml-2 mt-2 badge ") Thêm mới
+      span
+        a(href=`/transactions/switch/${sessionId}`, class="btn btn-primary ml-2 mt-2 badge ") Thuê sách
+    table(style='width:95%', class='ml-4 table table-bordered')
             tr
               th avatar
               th Title
               th Description
-              th(colspan="2") Status
+              th(colspan="3") 
             each book in books
                  tr
                     td
                       img(src=book.avatar width='32')
                     td=book.title
-                    td=book.description
-                    td
-                        a(href='/books/update/' + book.id, class="btn btn-primary") Edit
-                    td 
-                        a(href='/books/delete/' + book.id, class="btn btn-primary") Delete
-
+                    td=book.description 
+                    if isUser === false 
+                      td 
+                        a(href='/cart/add/' + book.id, class="btn btn-primary", style='width: 150px') Thêm vào giỏ
+                    else
+                      td
+                        a(href='/books/update/' + book.id, class="btn btn-primary") Sửa
+                      td 
+                        a(href='/books/delete/' + book.id, class="btn btn-primary") Xóa
+                      td 
+                        a(href='/cart/add/' + book.id, class="btn btn-primary", style='width: 150px') Thêm vào giỏ
     nav(aria-label='Page navigation example' class='float-right mr-5')
       ul.pagination
         li.page-item

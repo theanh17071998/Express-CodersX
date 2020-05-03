@@ -4,17 +4,34 @@ const cloudinary = require('cloudinary').v2;
 const db = require('../db')
 
 module.exports.index = function (req, res) {
+   const cookie = req.signedCookies.userId;
+   const user = db.get('users').find({id: cookie}).value();
    let page = req.query.page || 1;
    let perPage = 8;
    let drop = (page-1)*perPage;
    let total = db.get("books").value().length;
    let totalPage = total/perPage;
-    res.render('books/index', {
-        books: db.get("books").drop(drop).take(perPage).value(),
-        totalPage: totalPage,
-        n : 1,
-        page: page
-    })
+   let isUser = true; 
+   let sessionId = req.signedCookies.sessionId;
+   if(!cookie || !user.isAdmin){
+      isUser = false;
+      return res.render('books/index', {
+         books: db.get("books").drop(drop).take(perPage).value(),
+         totalPage: totalPage,
+         n : 1,
+         page: page,
+         isUser: isUser,
+         sessionId: sessionId,
+         isAdmin: user.isAdmin
+     })
+   }
+   return res.render('books/index', {
+      books: db.get("books").drop(drop).take(perPage).value(),
+      totalPage: totalPage,
+      n : 1,
+      page: page,
+      isAdmin: user.isAdmin
+   })
    }
  module.exports.delete = function(req, res){
     var id = req.params.id; 

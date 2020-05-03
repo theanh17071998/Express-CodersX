@@ -1,6 +1,9 @@
 // const md5 = require('md5')
 const bcrypt = require('bcrypt')
 const sgMail = require('@sendgrid/mail');
+const shortid = require('shortid');
+const cloudinary = require('cloudinary').v2;
+
 
 const db = require('../db');
 
@@ -11,6 +14,14 @@ module.exports.postLogin =  (req, res, next) => {
    const email = req.body.email;
    const password = req.body.password;
    const user = db.get('users').find({email: email}).value()
+   if(!user){
+    return  res.render('auth/login', {
+        errors: [
+            'User does not exist.'
+        ],
+        values: req.body
+    });
+    }
    let count = user.wrongLoginCount;
    if(count === 2){
     // using Twilio SendGrid's v3 Node.js Library
@@ -35,17 +46,6 @@ module.exports.postLogin =  (req, res, next) => {
         ],
     });
    }
-   if(!user){
-        count = count + 1;
-        db.get('users').find(user).assign({wrongLoginCount: count}).write()
-        return  res.render('auth/login', {
-            errors: [
-                'User does not exist.'
-            ],
-            values: req.body
-        });
-     
-   }
    if(!bcrypt.compareSync(password, user.password)) {
         count = count + 1;
         db.get('users').find(user).assign({wrongLoginCount: count}).write()
@@ -61,4 +61,20 @@ module.exports.postLogin =  (req, res, next) => {
        signed: true
    })
    res.redirect('/users')
+}
+
+module.exports.signUp = (req, res, next) => {
+    res.render('auth/signup');
+}
+module.exports.postSignUp = (req, res, next) => {
+    console.log(req.signedCookies.sessionId);
+    req.body.id = req.signedCookies.sessionId;
+    req.body.isAdmin = false;
+    req.body.avatar = cloudinary.image("http://res.cloudinary.com/nguyentheanh/image/upload/v1588119828/TA_Books/qjyhr2twdmdlvtznfxb5.png")
+    .split("'")[1];
+    req.body.wrongLoginCount =  0;
+    var salt = bcrypt.genSaltSync(10);
+    req.body.password = bcrypt.hashSync(req.body.password, salt);
+    db.get('users').push(req.body).write();
+    res.redirect('/auth/login')
 }
