@@ -19,7 +19,7 @@ block content
                       img(src=book.avatar width='32')
                     td=book.title
                     td=book.description 
-                    if isUser === false 
+                    if isUser === false || isAdmin === false
                       td 
                         a(href='/cart/add/' + book.id, class="btn btn-primary", style='width: 150px') Thêm vào giỏ
                     else

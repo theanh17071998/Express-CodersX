@@ -5,24 +5,27 @@ const cloudinary = require('cloudinary').v2;
 const bcrypt = require('bcrypt')
 
 const db = require('../db')
+const User = require('../models/user.model')
 
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
     let page = req.query.page || 1;
     let perPage = 8;
-    let drop = (page-1)*perPage;
-    let total = db.get("users").value().length;
+    let users = await User.find();
+    let total = users.length;
+    let start = (page - 1)*perPage
+    let end = page*perPage
     let totalPage = total/perPage;
     res.render('users/index', {
-        users: db.get('users').drop(drop).take(perPage).value(),
+        users: users.slice(start, end),
         totalPage: totalPage,
         n : 1,
         page: page
-    })
+    });
 }
 module.exports.create = (req, res) => {
     res.render('users/create')
 }
-module.exports.postCreate =  (req, res) => {
+module.exports.postCreate = async (req, res) => {
     req.body.id = shortid.generate();
     req.body.isAdmin = false;
     req.body.avatar = cloudinary
@@ -31,24 +34,22 @@ module.exports.postCreate =  (req, res) => {
     req.body.wrongLoginCount =  0;
     var salt = bcrypt.genSaltSync(10);
     req.body.password = bcrypt.hashSync(req.body.password, salt);
-    db.get('users').push(req.body).write();
+    await User.create(req.body);
     res.redirect('/users')
 }
-module.exports.delete = (req, res) => {
+module.exports.delete = async (req, res) => {
     var id = req.params.id;
-    var user = db.get('users').find({id: id}).value();
-    db.get('users').remove(user).write();
+    await User.findOneAndDelete({_id: id});
     res.redirect('/users')
 }
-module.exports.postUpdate =  (req,res) => {
+module.exports.postUpdate = async (req,res) => {
     var id = req.params.id;
-    var user = db.get('users').find({id: id}).value();
-    db.get('users').find(user).assign({name: req.body.name, phone: req.body.phone }).write();
+    await User.findOneAndUpdate({_id: id}, {name: req.body.name, phone: req.body.phone })
     res.redirect('/users')
 }
-module.exports.update = (req, res) => {
+module.exports.update = async (req, res) => {
     var id = req.params.id;
-    var user = db.get('users').find({id: id}).value();
+    let user = await User.findOne({_id: id});
     var userEdit = {};
     userEdit.id = id;
     userEdit.name = user.name
@@ -57,9 +58,9 @@ module.exports.update = (req, res) => {
         user: userEdit
     })
 }
-module.exports.updateProfile = (req, res) => {
+module.exports.updateProfile = async (req, res) => {
     var id = req.params.id;
-    var user = db.get('users').find({id: id}).value();
+    let user = await User.findOne({_id: id});
     var userEdit = {};
     userEdit.id = id;
     userEdit.name = user.name
@@ -68,28 +69,20 @@ module.exports.updateProfile = (req, res) => {
         user: userEdit
     })
 }
-module.exports.updateAvatar = (req, res) => {
+module.exports.updateAvatar = async (req, res) => {
     var id = req.params.id;
-    console.log(id);
-    var user = db.get('users').find({id: id}).value();
-    console.log(user)
+    let user = await User.findOne({_id: id});
     var userEdit = {};
     userEdit.avatar = user.avatar
     res.render('users/updateAvatar', {
         user: userEdit
     })
 }
-module.exports.postUpdateAvatar = (req, res) => {
+module.exports.postUpdateAvatar = async (req, res) => {
     var id = req.params.id;
-    var user = db.get('users').find({id: id}).value();
-    let urlAvatar = 'huhu';
-    cloudinary.uploader.upload(req.file.path, {folder: "/TA_Books", eager_async: false}, function(error, result) {
-        urlAvatar = result.url;
-        console.log(result.url, error)
+    let urlAvatar = await cloudinary.uploader.upload(req.file.path, {folder: "/TA_Books", eager_async: false}, function(error, result) {
+      return result.url
     });
-    setTimeout(() => {
-        db.get('users').find(user).assign({avatar: urlAvatar}).write();
+       await User.findOneAndUpdate({_id: id}, {avatar: urlAvatar})
         res.redirect('/users')
-    }, 25000)
-
 }

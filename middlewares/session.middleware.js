@@ -1,16 +1,17 @@
 const shortid = require('shortid');
 
 const db = require('../db')
+const Session = require('../models/session.model')
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     if(!req.signedCookies.sessionId){
         const sessionId =  shortid.generate();
         res.cookie('sessionId', sessionId, {
             signed: true
         });
-        db.get('sessions').push({
+        await Session.create({
             id: sessionId
-        }).write()
+        })
     }
     next()
 }
