@@ -10,7 +10,8 @@ module.exports = async (req, res, next) => {
             signed: true
         });
         await Session.create({
-            id: sessionId
+            id: sessionId,
+            cart: {length: 0}
         })
     }
     next()

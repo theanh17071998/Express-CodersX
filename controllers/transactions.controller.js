@@ -6,13 +6,29 @@ const Book = require('../models/book.model')
 const Session = require('../models/session.model')
 
 module.exports.index = async function (req, res) {
+    const cookie = req.signedCookies.userId;
+    const user = await User.findOne({_id: cookie})
+    let transactions = await Transaction.find();
+    const transactionsUser = transactions.filter((transaction)=> {
+        return transaction.userId === cookie;
+    })
     let page = req.query.page || 1;
     let perPage = 8;
-    let transactions = await Transaction.find();
-    let total = transactions.length;
+    var total = transactions.length;
     let start = (page - 1)*perPage
     let end = page*perPage
-    let totalPage = total/perPage;
+    var totalPage = total/perPage;
+    if(user.isAdmin === false){
+        total = transactionsUser.length;
+        totalPage = total/perPage;
+        return res.render('transactions/index', {
+            transactions: transactionsUser.slice(start, end),
+            totalPage: totalPage,
+            n : 1,
+            page: page
+        })
+    }
+
     res.render('transactions/index', {
         transactions: transactions.slice(start, end),
         totalPage: totalPage,

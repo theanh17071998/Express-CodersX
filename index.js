@@ -33,7 +33,7 @@ app.get('/', function (req, res ) {
  })
 app.use('/users', authMiddleware.requireAuth,authorMiddleware.authoring, userRoute);
 app.use('/books', authMiddleware.notRequireAuth, bookRoute);
-app.use('/transactions', authMiddleware.requireAuth, authorMiddleware.authoring,transactionRoute)
+app.use('/transactions', authMiddleware.requireAuth, transactionRoute)
 app.use('/auth', authRoute)
 app.use('/cart', cartRoute)
 

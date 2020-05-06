@@ -4,7 +4,6 @@ const cloudinary = require('cloudinary').v2;
 
 const bcrypt = require('bcrypt')
 
-const db = require('../db')
 const User = require('../models/user.model')
 
 module.exports.index = async (req, res) => {
@@ -34,6 +33,7 @@ module.exports.postCreate = async (req, res) => {
     req.body.wrongLoginCount =  0;
     var salt = bcrypt.genSaltSync(10);
     req.body.password = bcrypt.hashSync(req.body.password, salt);
+    req.body.car = {length: 0};
     await User.create(req.body);
     res.redirect('/users')
 }

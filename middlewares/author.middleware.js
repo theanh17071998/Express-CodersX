@@ -1,4 +1,4 @@
-const db = require('../db')
+
 const User = require('../models/user.model')
 
 module.exports.authoring = async (req, res, next) => {
@@ -11,7 +11,7 @@ module.exports.authoring = async (req, res, next) => {
     if(user.isAdmin === false){
        return res.render('transactions/index', {
             transactions: transactionsUser
-        })
+        });
     }
     next()
 }
