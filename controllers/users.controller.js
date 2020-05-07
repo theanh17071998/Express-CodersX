@@ -33,7 +33,7 @@ module.exports.postCreate = async (req, res) => {
     req.body.wrongLoginCount =  0;
     var salt = bcrypt.genSaltSync(10);
     req.body.password = bcrypt.hashSync(req.body.password, salt);
-    req.body.car = {length: 0};
+    req.body.cart = {length: 0};
     await User.create(req.body);
     res.redirect('/users')
 }
