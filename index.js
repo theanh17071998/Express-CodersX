@@ -35,7 +35,7 @@ app.use('/users', authMiddleware.requireAuth,authorMiddleware.authoring, userRou
 app.use('/books', authMiddleware.notRequireAuth, bookRoute);
 app.use('/transactions', authMiddleware.requireAuth, transactionRoute)
 app.use('/auth', authRoute)
-app.use('/cart', authMiddleware.requireAuth,authorMiddleware.authoring,cartRoute)
+app.use('/cart', authMiddleware.requireAuth,cartRoute)
 
 app.listen(port, function(){
     console.log('server running with port' + port);
