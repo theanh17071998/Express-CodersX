@@ -5,11 +5,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(function(){
-    console.log('conected')
-}).catch(function(){
-    console.log('error')
-})
+
 
 const userRoute = require('./routes/users.route')
 const bookRoute = require('./routes/books.route')
@@ -43,4 +39,9 @@ app.use('/cart', cartRoute)
 
 app.listen(port, function(){
     console.log('server running with port' + port);
+    mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(function(){
+        console.log('conected')
+    }).catch(function(error){
+        console.log(`error: ${error}`)
+    })
 });
