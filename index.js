@@ -17,7 +17,7 @@ const authMiddleware = require('./middlewares/auth.middleware')
 const authorMiddleware = require('./middlewares/author.middleware')
 const sessionMiddleware = require('./middlewares/session.middleware')
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 const app = express();
 app.set('views', './views');
