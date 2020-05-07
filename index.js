@@ -5,7 +5,11 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(function(){
+    console.log('conected')
+}).catch(function(){
+    console.log('error')
+})
 
 const userRoute = require('./routes/users.route')
 const bookRoute = require('./routes/books.route')
